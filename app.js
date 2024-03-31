@@ -26,15 +26,13 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
-app.listen(3000, () => {
-  console.log("Server is running. Use our API on port: 3000");
-});
+
 
 mongoose
   .connect(DB_HOST)
   .then(() => {
  app.listen(PORT, () => {
-  console.log("Server is running. Use our API on port: 3000");
+  console.log("Database connect success");
 });
   })
   .catch(error => {

@@ -7,7 +7,7 @@ import {
   updateContact,
   contactStatusUpdate,
 } from "../controllers/contactsControllers.js";
-import isValidId from "../middlewares/isValidId";
+import isValidId from "../middlewares/isValidId.js";
 
 const contactsRouter = express.Router();
 
