@@ -1,6 +1,6 @@
 import { writeFile } from "fs/promises";
 import { nanoid } from "nanoid";
-import Contact from "../models/Contacts";
+import Contact from "../models/Contact";
 
 const contactsPath = path.resolve("db", "contacts.json");
 
