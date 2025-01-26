@@ -1,4 +1,5 @@
 {
+
   "name": "goit-node-rest-api",
   "version": "1.0.0",
   "description": "",
@@ -117,4 +118,28 @@
   "keywords": [],
   "author": "",
   "license": "ISC"
+
+   "name": "goit-node-rest-api",
+   "type": "module",
+  "description": "Домашнє завдання 2\r Написати REST API для роботи з колекцією контактів. Для роботи з REST API використовуй [Postman] (https://www.getpostman.com/).",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "dev": "nodemon ./app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
+    "joi": "^17.12.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+ 
+
 }
