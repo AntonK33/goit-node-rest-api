@@ -1,16 +1,3 @@
-
-import contactsService from "../services/contactsServices.js";
-
-export const getAllContacts = (req, res) => {};
-
-export const getOneContact = (req, res) => {};
-
-export const deleteContact = (req, res) => {};
-
-export const createContact = (req, res) => {};
-
-export const updateContact = (req, res) => {};
-
 import HttpError from "../helpers/HttpError.js";
 import contactsService from "../services/contactsServices.js";
 import {
@@ -18,7 +5,7 @@ import {
   updateContactSchema,
 } from "../schemas/contactsSchemas.js";
 
-export const getAllContacts = async (req, res) => {
+export const getAllContacts = async (req, res, next) => {
   try {
     const result = await contactsService.listContacts();
     res.json(result);
@@ -83,5 +70,6 @@ export const updateContact = async (req, res, next) => {
     res.json(result);
   } catch (error) {
     next(error);
+  
   }
 };
