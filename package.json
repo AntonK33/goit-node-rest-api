@@ -13,7 +13,9 @@
     "dev": "nodemon ./app.js"
 
   },
-
+  "engines": {
+    "node": "20.10.0" 
+  },
   "main": "index.js",
 
   "dependencies": {
