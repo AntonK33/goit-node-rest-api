@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
 
 const { DB_HOST, PORT = 3000 } = process.env;
 
-mongoose.connect(DB_HOST)
+mongoose.connect(DB_HOST,{ useMongoClient:true })
   .then(() => {
     console.log('Database connection successful');
     app.listen(PORT, () => {
