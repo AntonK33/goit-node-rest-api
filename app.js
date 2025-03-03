@@ -31,9 +31,9 @@ app.use((err, req, res, next) => {
 //   console.log("Server is running. Use our API on port: 3000");
 // });
 
-const { DB_HOST, PORT = 3000 } = process.env;
-
-mongoose.connect(DB_HOST,{ useMongoClient:true })
+const {  PORT = 3000 } = process.env;
+const DB_HOST = process.env.MONGO || 'test'
+mongoose.connect(DB_HOST,)
   .then(() => {
     console.log('Database connection successful');
     app.listen(PORT, () => {
