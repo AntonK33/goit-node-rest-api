@@ -32,7 +32,7 @@ app.use((err, req, res, next) => {
 // });
 
 const {  PORT = 3000 } = process.env;
-const DB_HOST = process.env.MONGO || 'test'
+const DB_HOST = process.env|| 'test'
 mongoose.connect(DB_HOST,)
   .then(() => {
     console.log('Database connection successful');
