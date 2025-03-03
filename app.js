@@ -32,8 +32,10 @@ app.use((err, req, res, next) => {
 // });
 
 const {  PORT = 3000 } = process.env;
-const DB_HOST = process.env.DB_HOST|| 'test'
-mongoose.connect(DB_HOST,)
+// const DB_HOST = process.env.DB_HOST || 'test'
+DB_HOST="mongodb+srv://Anton:Atolzp3JREThkzQa@cluster0.5bkq7p3.mongodb.net/my-contacts?retryWrites=true&w=majority&appName=Cluster0"
+
+mongoose.connect(DB_HOST)
   .then(() => {
     console.log('Database connection successful');
     app.listen(PORT, () => {
