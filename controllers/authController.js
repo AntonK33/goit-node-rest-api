@@ -7,7 +7,8 @@ import jwt from "jsonwebtoken";
 import fs from "fs/promises";
 import path from "path";
 import Jimp from "jimp";
-import { token } from "morgan";
+
+import gravatar from "gravatar";
 const { JWT_SECRET } = process.env;
 
 const signup = async (req, res) => {
@@ -51,7 +52,7 @@ const signin = async (req, res) => {
 const getCurrent = async (req, res) => {
 const {userName, email} =  req.body;
 
-    res.jes({
+    res.json({
         userName,
         email
     })
@@ -61,7 +62,7 @@ const signout = async (req, res) => {
     const { _id } = req.user;
     await authServices.updateUser({ _id }, { token: null });
 
-    res.jes({
+    res.json({
         message: "Signout secces"
     })
 }
