@@ -1,4 +1,4 @@
-import { writeFile } from "fs/promises";
+import { writeFile, readFile } from "fs/promises";
 import { nanoid } from "nanoid";
 
 import path from 'path';
