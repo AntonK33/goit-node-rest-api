@@ -28,9 +28,9 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
-// app.listen(3000, () => {
-//   console.log("Server is running. Use our API on port: 3000");
-// });
+app.listen(3000, () => {
+  console.log("Server is running. Use our API on port: 3000");
+});
 
 const { DB_HOST, PORT = 3000 } = process.env;
 // const DB_HOST = process.env.DB_HOST || 'test'
@@ -48,3 +48,4 @@ mongoose.connect(DB_HOST)
     process.exit(1);
   })
   ;
+  export default app;
