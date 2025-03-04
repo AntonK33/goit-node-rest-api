@@ -7,7 +7,7 @@ import {
   updateContact,
 } from "../controllers/contactsControllers.js";
 
-const contactsRouter = express.Router();
+ const contactsRouter = express.Router();
 
 contactsRouter.get("/", getAllContacts);
 
