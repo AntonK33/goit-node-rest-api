@@ -6,7 +6,11 @@ import { handleSaveError, setUpdateSettings } from "./hooks.js";
 
 const emailRegexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
- const userSchema = new Schema({
+const userSchema = new Schema({
+    username: {
+    type: String,
+    required: true,
+  },
     password: {
     type: String,
     required: [true, 'Password is required'],
@@ -28,7 +32,7 @@ const emailRegexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 }, { versionKey: false, timestamps: true });
 
 userSchema.post("save", handleSaveError);
-
+//cocst registerSchema = 
 userSchema.pre("findOneAndUpdate", setUpdateSettings);
 userSchema.post("findOneAndUpdate", handleSaveError);
 

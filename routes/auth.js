@@ -11,4 +11,3 @@ route.post("/login", validateBody(userSigninSchema), authController.signin);
 
 
 export default route; 
-// kjkjhk
