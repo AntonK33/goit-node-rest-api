@@ -25,7 +25,7 @@ const signup = async (req, res) => {
      
     res.json({
         email: newUser.email,
-        name: newUser.name,
+        name: newUser.username,
     })
 }
 
