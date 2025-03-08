@@ -31,7 +31,7 @@ const signup = async (req, res) => {
 }
 
 const signin = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body;                                                                                                                                                
     console.log("Запрос на вход:", email, password); // Лог входных данных
     const user = await authServices.findUser({ email });
     console.log(user);
