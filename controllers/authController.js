@@ -14,6 +14,7 @@ const { JWT_SECRET } = process.env;
 const signup = async (req, res) => {
     const { email } = req.body;
     const user = await authServices.findUser({ email });
+    console.log(user);
     if (user) {
     throw HttpError(409, "Email in use");
     }
@@ -31,7 +32,9 @@ const signup = async (req, res) => {
 
 const signin = async (req, res) => {
     const { email, password } = req.body;
+    console.log("Запрос на вход:", email, password); // Лог входных данных
     const user = await authServices.findUser({ email });
+    console.log(user);
     if (!user) {
         throw HttpError(401, "Email or password is wrong")
     }
@@ -43,6 +46,7 @@ const signin = async (req, res) => {
     const payload = {id}
 
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "23h" });
+    
     await authServices.updateUser({ _id: id }, { token });
 
     res.json({ token });
@@ -50,10 +54,10 @@ const signin = async (req, res) => {
 }
 
 const getCurrent = async (req, res) => {
-const {userName, email} =  req.body;
+const {username, email} =  req.body;
 
     res.json({
-        userName,
+        username,
         email
     })
 }
