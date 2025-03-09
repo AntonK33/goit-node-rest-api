@@ -6,8 +6,11 @@ import {
 } from "../schemas/contactsSchemas.js";
 
 export const getAllContacts = async (req, res, next) => {
+  const { _id: owner } = req.user;
+  const { page = 1, limit = 10 } = req.query;
+  const skip = (page - 1) * limit;
   try {
-    const result = await contactsService.listContacts();
+    const result = await contactsService.listContacts({owner}, {skip, limit});
     res.json(result);
   } catch (error) {
     next(error);
