@@ -29,4 +29,4 @@ const authenticate = async (req, _, next) => {
   }
 };
 
-export default authenticate;
+export default authenticate;  
