@@ -13,7 +13,7 @@ import gravatar from "gravatar";
 const { JWT_SECRET } = process.env;
 
 const signup = async (req, res) => {
-    const { email } = req.body;
+    const { email,password } = req.body;
     const user = await authServices.findUser({ email });
     console.log(user);
     if (user) {
