@@ -7,6 +7,7 @@ import jwt from "jsonwebtoken";
 import fs from "fs/promises";
 import path from "path";
 import Jimp from "jimp";
+import bcrypt from "bcrypt";
 
 import gravatar from "gravatar";
 const { JWT_SECRET } = process.env;
