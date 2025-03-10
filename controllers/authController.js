@@ -56,11 +56,11 @@ const signin = async (req, res) => {
 }
 
 const getCurrent = async (req, res) => {
-const {username, email} =  req.user;
- console.log(username, email);
+const {subscription, email} =  req.user;
+ console.log(subscription, email);
     res.json({
-        username,
-        email
+        email,
+        subscription
     })
 }
 
