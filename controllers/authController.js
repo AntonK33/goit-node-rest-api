@@ -56,7 +56,7 @@ const signin = async (req, res) => {
 }
 
 const getCurrent = async (req, res) => {
-const {username, email} =  req.body;
+const {username, email} =  req.user;
  console.log(username, email);
     res.json({
         username,
