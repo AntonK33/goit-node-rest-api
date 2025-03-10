@@ -6,7 +6,7 @@ import {
 } from "../schemas/contactsSchemas.js";
 
 export const getAllContacts = async (req, res, next) => {
-  const { _id: owner } = req.user;
+  const { _id: owner } = req.user;   
   const { page = 1, limit = 10 } = req.query;
   const skip = (page - 1) * limit;
   try {

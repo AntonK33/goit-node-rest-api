@@ -4,7 +4,7 @@ import { handleSaveError, setUpdateSettings } from "./hooks.js";
 
 //import{ handleMongooseError } from"../helpers";
 
-const emailRegexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//const emailRegexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const userSchema = new Schema({
     username: {
