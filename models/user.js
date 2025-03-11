@@ -1,10 +1,6 @@
 import { Schema, model } from "mongoose";
-import Joi from"joi";
 import { handleSaveError, setUpdateSettings } from "./hooks.js";
 
-//import{ handleMongooseError } from"../helpers";
-
-//const emailRegexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const userSchema = new Schema({
     username: {

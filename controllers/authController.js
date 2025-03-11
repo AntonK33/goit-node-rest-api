@@ -8,7 +8,6 @@ import fs from "fs/promises";
 import path from "path";
 import Jimp from "jimp";
 import bcrypt from "bcrypt";
-
 import gravatar from "gravatar";
 const { JWT_SECRET } = process.env;
 
@@ -28,7 +27,7 @@ const signup = async (req, res) => {
      
     res.json({
         email: newUser.email,
-        name: newUser.username,
+        starter: newUser.subscription,
     })
 }
 
