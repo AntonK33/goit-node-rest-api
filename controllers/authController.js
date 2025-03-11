@@ -27,9 +27,10 @@ const signup = async (req, res) => {
      
     res.json({
         email: newUser.email,
-        starter: newUser.subscription,
+        subscription: newUser.subscription,
     })
 }
+
 
 const signin = async (req, res) => {
     const { email, password } = req.body;                                                                                                                                                

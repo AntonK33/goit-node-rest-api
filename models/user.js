@@ -28,22 +28,8 @@ const userSchema = new Schema({
 }, { versionKey: false, timestamps: true });
 
 userSchema.post("save", handleSaveError);
-//cocst registerSchema = 
 userSchema.pre("findOneAndUpdate", setUpdateSettings);
 userSchema.post("findOneAndUpdate", handleSaveError);
 
- 
-
-// export const schemas = {
-//     registerSchema,
-//     loginSchema,
-// }
-
  const User = model("user", userSchema);
 export default User;
-
-
-// module.exports = {
-//     User,
-//     schemas,
-// }
