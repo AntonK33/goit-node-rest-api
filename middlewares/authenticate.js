@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import HttpError from "../helpers/HttpError.js";
+import HttpError   from "../helpers/HttpError.js";
 import { findUser } from "../services/authServices.js";
 
 const { JWT_SECRET } = process.env;
@@ -29,4 +29,4 @@ const authenticate = async (req, _, next) => {
   }
 };
 
-export default authenticate;
+export default authenticate;  

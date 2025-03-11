@@ -1,12 +1,12 @@
 import { Schema, model } from "mongoose";
-import Joi from"joi";
 import { handleSaveError, setUpdateSettings } from "./hooks.js";
 
-//import{ handleMongooseError } from"../helpers";
 
-const emailRegexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
- const userSchema = new Schema({
+const userSchema = new Schema({
+    username: {
+    type: String,
+    required: true,
+  },
     password: {
     type: String,
     required: [true, 'Password is required'],
@@ -28,22 +28,8 @@ const emailRegexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 }, { versionKey: false, timestamps: true });
 
 userSchema.post("save", handleSaveError);
-
 userSchema.pre("findOneAndUpdate", setUpdateSettings);
 userSchema.post("findOneAndUpdate", handleSaveError);
 
- 
-
-// export const schemas = {
-//     registerSchema,
-//     loginSchema,
-// }
-
  const User = model("user", userSchema);
 export default User;
-
-
-// module.exports = {
-//     User,
-//     schemas,
-// }

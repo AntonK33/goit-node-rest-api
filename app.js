@@ -2,19 +2,23 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
-import "dotenv/config";
+// import "dotenv/config";
+import dotenv from "dotenv";
+import fs from "fs";
 
 import contactsRouter from "./routes/contactsRouter.js";
 
-import auth from './routes/auth.js';
-
+import auth from "./routes/auth.js";
+dotenv.config();
 
 const app = express();
 
 app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
-app.use("/api/users",auth);
+
+//app.use("/api/users",auth);
+app.use("/api/auth", auth);
 app.use("/api/contacts", contactsRouter);
 
 app.use((_, res) => {
@@ -31,6 +35,8 @@ app.use((err, req, res, next) => {
 // });
 
 const { DB_HOST, PORT = 3000 } = process.env;
+// const DB_HOST = process.env.DB_HOST || 'test'
+//const DB_HOST="mongodb+srv://Anton:Atolzp3JREThkzQa@cluster0.5bkq7p3.mongodb.net/my-contacts?retryWrites=true&w=majority&appName=Cluster0"
 
 mongoose.connect(DB_HOST)
   .then(() => {
@@ -44,3 +50,4 @@ mongoose.connect(DB_HOST)
     process.exit(1);
   })
   ;
+  export default app;

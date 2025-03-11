@@ -7,30 +7,36 @@ import jwt from "jsonwebtoken";
 import fs from "fs/promises";
 import path from "path";
 import Jimp from "jimp";
-import { token } from "morgan";
+import bcrypt from "bcrypt";
+import gravatar from "gravatar";
 const { JWT_SECRET } = process.env;
 
 const signup = async (req, res) => {
-    const { email } = req.body;
+    const { email,password } = req.body;
     const user = await authServices.findUser({ email });
+   
     if (user) {
     throw HttpError(409, "Email in use");
     }
+    const hashedPassword = await bcrypt.hash(password, 10);
     const subscription = req.body.subscription ?? "starter";
     const avatarURL = gravatar.url(email);
-    const body = { ...req.body, subscription, avatarURL };
+    const body = { ...req.body,password: hashedPassword, subscription, avatarURL };
 
     const newUser = await User.create(body);
      
     res.json({
         email: newUser.email,
-        name: newUser.name,
+        subscription: newUser.subscription,
     })
 }
 
+
 const signin = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body;                                                                                                                                                
+    
     const user = await authServices.findUser({ email });
+    
     if (!user) {
         throw HttpError(401, "Email or password is wrong")
     }
@@ -38,22 +44,29 @@ const signin = async (req, res) => {
     if (!comparePassword) {
        throw HttpError(401, "Email or password is wrong")
     }
-    const { _id: id } = user;
+    const { _id: id, subscription } = user;
     const payload = {id}
 
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "23h" });
+    
     await authServices.updateUser({ _id: id }, { token });
 
-    res.json({ token });
+    res.json({
+        token,
+        user:{
+    email,
+    subscription: subscription || starter
+  }
+     });
 
 }
 
 const getCurrent = async (req, res) => {
-const {userName, email} =  req.body;
-
-    res.jes({
-        userName,
-        email
+const {subscription, email} =  req.user;
+ console.log(subscription, email);
+    res.json({
+        email,
+        subscription
     })
 }
 
@@ -61,7 +74,7 @@ const signout = async (req, res) => {
     const { _id } = req.user;
     await authServices.updateUser({ _id }, { token: null });
 
-    res.jes({
+    res.json({
         message: "Signout secces"
     })
 }
